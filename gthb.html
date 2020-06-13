@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  
+    <meta charset="UTP-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equivt="X=UA=Compatible" content="ie=edge">
+    <style>
+     html, body{height: 100%;}
+     #map{height: 90%;}
+     </style>
+     <title>Document</title>
+     </head>
+     <body>
+     <div id="map"></div>
+     <div id = "result"></div>
+     <script>
+        function initMap() {
+        var map;
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 35.000, lng: 110.000},
+        zoom: 4,
+        minZoom: 4,
+        });
+        var markerj = new google.maps.Marker({     
+        position: {lat: 37.000, lng: 139.500}, 　//マーカーの位置
+         cilckable: true,　//クリックできる
+         icon: {url:'data:image/jpeg;base64,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',
+         scaledSize:{width: 55, height: 40},      //iconの大きさを変える   
+        }
+
+        });
+        var markerk = new google.maps.Marker({     
+        position: {lat: 37.300, lng: 127.30}, 
+        cilckable: true,
+        icon:{url:'https://mouda.asia/file/thumbs/I0002971/5bb5b5918d31bb5db6b28e7ed0edc0bc_ed04211ef31f0bb200251eab56c406fe/300__f.jpg',
+        scaledSize:{width:40, height:35},
+        }
+        });
+        var markerc = new google.maps.Marker({
+        position: {lat: 37.540, lng: 105.230},
+        clickable: true,
+        icon:{url:'data:image/jpeg;base64,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',
+        scaledSize:{width:40, height:50},
+        }
+        });
+        var markeri = new google.maps.Marker({
+        position: {lat: 24.590, lng: 78.960},
+        clickable: true,
+        icon:{url:'https://media.istockphoto.com/photos/cute-indian-baby-girl-with-traditional-indian-dress-picture-id924911718',
+        scaledSize:{width:45, height:35},
+        }
+        });
+        var markerma = new google.maps.Marker({
+        position: {lat: 22.000, lng: 96.150},
+        clickable: true,
+        icon:{url:'https://previews.123rf.com/images/imagex/imagex1508/imagex150800024/43535703-%E3%83%81%E3%83%B3%E5%B7%9E%E3%80%81%E3%83%9F%E3%83%A3%E3%83%B3%E3%83%9E%E3%83%BC-2015-%E5%B9%B4-6-%E6%9C%88-18-%E6%97%A5-%E3%81%8B%E3%82%8F%E3%81%84%E3%81%84%E8%8B%A5%E3%81%84%E8%B5%A4%E3%81%A1%E3%82%83%E3%82%93%E3%81%A7%E6%9C%80%E8%BF%91%E9%96%8B%E3%81%8B%E3%82%8C%E3%81%9F%E5%B0%91%E5%A5%B3%E3%81%AE%E3%81%82%E3%81%94%E3%81%AE%E8%A6%B3%E5%85%89%E5%AE%A2%E7%8A%B6%E6%85%8B%E4%B8%AD%E5%B1%B1%E9%96%93%E5%9C%B0%E5%9F%9F%E3%80%81%E3%83%9F%E3%83%A3%E3%83%B3%E3%83%9E%E3%83%BC-%E3%83%93%E3%83%AB%E3%83%9E-%E3%81%AE.jpg',
+        scaledSize:{width:50,height:40},
+        }
+        });
+        var markermo = new google.maps.Marker({
+        position: {lat: 46.864, lng: 102.846},
+        clickable: true,
+        icon:{url:'https://media.istockphoto.com/photos/mongolian-baby-picture-id183044351',
+        scaledSize:{width:30 ,height:45},
+        }
+        });
+        
+        markerj.setMap(map);
+        markerk.setMap(map); 
+        markerc.setMap(map);
+        markeri.setMap(map);
+        markerma.setMap(map);
+        markermo.setMap(map);
+
+        var infowindowj = new google.maps.InfoWindow({
+          content:'だいたい<br>人口：1億2600万人<br>面積：378000k㎡<br>でちゅ', 
+        }); 
+        //下のバナーにその国の基本的な情報を出力。
+        var infowindowk = new google.maps.InfoWindow({
+            content:'だいたい<br>人口:5107万人<br>大きさ：100200k㎡<br>でちゅ',
+        });
+        var infowindowc = new google.maps.InfoWindow({
+            content:'だいたい<br>人口:13.8億人<br>大きさ：9597000k㎡<br>でちゅ',
+        });
+        var infowindowi = new google.maps.InfoWindow({
+            content:'だいたい<br>人口:13.4億人<br>大きさ：3287000k㎡<br>でちゅ',
+        });
+        var infowindowma = new google.maps.InfoWindow({
+            content:'だいたい<br>人口:5337万人<br>大きさ：67600k㎡<br>でちゅ',
+        });
+        var infowindowmo = new google.maps.InfoWindow({
+            content:'だいたい<br>人口:307万人<br> 大きさ：156000k㎡<br>でちゅ',
+        });
+
+        
+        map.addListener('rightclick',rclickDousa);
+      function rclickDousa(){
+        map.setCenter({lat: 35.000, lng: 110.000})
+        infowindowj.close();
+        infowindowk.close();
+        infowindowc.close();
+        infowindowi.close();
+        infowindowma.close();
+        infowindowmo.close();
+        map.setZoom(4);
+        document.getElementById('result').innerHTML = "あかちゃんをクリック";
+      }//マーカー右クリック
+      //infowindowを閉じると同時に地図全体がみれる
+
+      markerj.addListener('click', markerjDousa);
+      function markerjDousa() {
+        map.setCenter({lat:38.000,lng:138.000});
+        map.setZoom(6);
+        infowindowj.open(map, markerj);
+        document.getElementById("result").innerHTML = "左クリックでもどる";
+      }
+      //左クリックでinfowindowを開く
+      //
+      markerk.addListener('click', markerkDousa);
+      function markerkDousa() {
+        map.setCenter({lat:36.300,lng:127.300});
+        map.setZoom(7.4);
+        infowindowk.open(map, markerk);
+        document.getElementById('result').innerHTML = "左クリックでもどる"
+      }
+      markerc.addListener('click', markercDousa);
+      function markercDousa() {
+        map.setCenter({lat: 37.540, lng: 105.230});
+        map.setZoom(4.8);
+        infowindowc.open(map, markerc);
+        document.getElementById('result').innerHTML = "左クリックでもどる"
+      }
+      markeri.addListener('click', markeriDousa);
+      function markeriDousa() {
+        map.setCenter({lat: 23.000, lng: 78.600});
+        map.setZoom(5);
+        infowindowi.open(map, markeri);
+        document.getElementById('result').innerHTML = "左クリックでもどる"
+      }
+      markerma.addListener('click', markermaDousa);
+      function markermaDousa() {
+        map.setCenter({lat: 22.000, lng: 96.150});
+        map.setZoom(6.3);
+        infowindowma.open(map, markerma);
+        document.getElementById('result').innerHTML = "左クリックでもどる"
+      }
+      markermo.addListener('click', markermoDousa);
+      function markermoDousa() {
+        map.setCenter({lat: 47.000, lng: 104.000});
+        map.setZoom(5.9);
+        infowindowmo.open(map, markermo);
+        document.getElementById('result').innerHTML = "左クリックでもどる"
+      }
+    }
+      </script>
+      <script src="" async defer></script>  
+    </body>
+    </html>
